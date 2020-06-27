@@ -1,0 +1,19 @@
+controller_manager_ns: ''
+controller_list:
+  - name: simple_ardop/arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - shoulder_joint
+      - bicep_joint
+      - forearm_joint
+      - wrist_joint
+      - wrist2_joint
+      - wrist3_joint
+  - name: simple_ardop/gripper_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - end_effector_joint

@@ -1,0 +1,1 @@
+controller_joint_names: ['wheel_front_left_joint', 'wheel_front_right_joint', 'wheel_back_left_joint', 'wheel_back_right_joint', 'shoulder_joint', 'bicep_joint', 'forearm_joint', 'wrist_joint', 'wrist2_joint', 'wrist3_joint', 'end_effector_joint', ]

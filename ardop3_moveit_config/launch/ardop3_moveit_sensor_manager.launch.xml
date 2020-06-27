@@ -1,0 +1,5 @@
+<launch>
+
+
+  <rosparam command="load" file="$(find ardop3_moveit_config)/config/kinect_config.yaml" />
+</launch>

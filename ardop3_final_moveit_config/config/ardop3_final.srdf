@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="ardop3_final">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="left_arm">
+        <joint name="shoulder_left_joint" />
+        <joint name="bicep_left_joint" />
+        <joint name="forearm_left_joint" />
+        <joint name="wrist_left_joint" />
+        <joint name="wrist2_left_joint" />
+        <joint name="wrist3_left_joint" />
+    </group>
+    <group name="left_end_effector">
+        <link name="end_effector_left_Link" />
+        <joint name="end_effector_left_joint" />
+    </group>
+    <group name="right_arm">
+        <joint name="shoulder_right_joint" />
+        <joint name="bicep_right_joint" />
+        <joint name="forearm_right_joint" />
+        <joint name="wrist_right_joint" />
+        <joint name="wrist2_right_joint" />
+        <joint name="wrist3_right_joint" />
+    </group>
+    <group name="right_end_effector">
+        <joint name="end_effector_right_joint" />
+    </group>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="odom" type="fixed" parent_frame="base_link" child_link="odom" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_link" link2="shoulder_left_Link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="shoulder_right_Link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="wheel_back_left_Link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="wheel_back_right_Link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="wheel_front_left_Link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="wheel_front_right_Link" reason="Adjacent" />
+    <disable_collisions link1="bicep_left_Link" link2="forearm_left_Link" reason="Adjacent" />
+    <disable_collisions link1="bicep_left_Link" link2="shoulder_left_Link" reason="Adjacent" />
+    <disable_collisions link1="bicep_left_Link" link2="shoulder_right_Link" reason="Never" />
+    <disable_collisions link1="bicep_left_Link" link2="wheel_back_left_Link" reason="Never" />
+    <disable_collisions link1="bicep_left_Link" link2="wheel_back_right_Link" reason="Never" />
+    <disable_collisions link1="bicep_left_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="bicep_left_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="bicep_right_Link" link2="forearm_right_Link" reason="Adjacent" />
+    <disable_collisions link1="bicep_right_Link" link2="shoulder_left_Link" reason="Never" />
+    <disable_collisions link1="bicep_right_Link" link2="shoulder_right_Link" reason="Adjacent" />
+    <disable_collisions link1="bicep_right_Link" link2="wheel_back_left_Link" reason="Never" />
+    <disable_collisions link1="bicep_right_Link" link2="wheel_back_right_Link" reason="Never" />
+    <disable_collisions link1="bicep_right_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="bicep_right_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="end_effector_left_Link" link2="wheel_back_left_Link" reason="Never" />
+    <disable_collisions link1="end_effector_left_Link" link2="wheel_back_right_Link" reason="Never" />
+    <disable_collisions link1="end_effector_left_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="end_effector_left_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="end_effector_left_Link" link2="wrist2_left_Link" reason="Never" />
+    <disable_collisions link1="end_effector_left_Link" link2="wrist3_left_Link" reason="Adjacent" />
+    <disable_collisions link1="end_effector_left_Link" link2="wrist_left_Link" reason="Never" />
+    <disable_collisions link1="end_effector_right_Link" link2="wheel_back_left_Link" reason="Never" />
+    <disable_collisions link1="end_effector_right_Link" link2="wheel_back_right_Link" reason="Never" />
+    <disable_collisions link1="end_effector_right_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="end_effector_right_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="end_effector_right_Link" link2="wrist3_right_Link" reason="Adjacent" />
+    <disable_collisions link1="forearm_left_Link" link2="shoulder_left_Link" reason="Never" />
+    <disable_collisions link1="forearm_left_Link" link2="wheel_back_left_Link" reason="Never" />
+    <disable_collisions link1="forearm_left_Link" link2="wheel_back_right_Link" reason="Never" />
+    <disable_collisions link1="forearm_left_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="forearm_left_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="forearm_left_Link" link2="wrist_left_Link" reason="Adjacent" />
+    <disable_collisions link1="forearm_right_Link" link2="wheel_back_left_Link" reason="Never" />
+    <disable_collisions link1="forearm_right_Link" link2="wheel_back_right_Link" reason="Never" />
+    <disable_collisions link1="forearm_right_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="forearm_right_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="forearm_right_Link" link2="wrist_right_Link" reason="Adjacent" />
+    <disable_collisions link1="shoulder_left_Link" link2="shoulder_right_Link" reason="Never" />
+    <disable_collisions link1="shoulder_left_Link" link2="wheel_back_left_Link" reason="Never" />
+    <disable_collisions link1="shoulder_left_Link" link2="wheel_back_right_Link" reason="Never" />
+    <disable_collisions link1="shoulder_left_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="shoulder_left_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="shoulder_right_Link" link2="wheel_back_left_Link" reason="Never" />
+    <disable_collisions link1="shoulder_right_Link" link2="wheel_back_right_Link" reason="Never" />
+    <disable_collisions link1="shoulder_right_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="shoulder_right_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_left_Link" link2="wheel_back_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_left_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_left_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_left_Link" link2="wrist2_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_left_Link" link2="wrist2_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_left_Link" link2="wrist3_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_left_Link" link2="wrist3_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_left_Link" link2="wrist_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_left_Link" link2="wrist_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_right_Link" link2="wheel_front_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_right_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_right_Link" link2="wrist2_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_right_Link" link2="wrist2_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_right_Link" link2="wrist3_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_right_Link" link2="wrist3_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_right_Link" link2="wrist_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_back_right_Link" link2="wrist_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_left_Link" link2="wheel_front_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_left_Link" link2="wrist2_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_left_Link" link2="wrist2_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_left_Link" link2="wrist3_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_left_Link" link2="wrist3_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_left_Link" link2="wrist_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_left_Link" link2="wrist_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_right_Link" link2="wrist2_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_right_Link" link2="wrist2_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_right_Link" link2="wrist3_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_right_Link" link2="wrist3_right_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_right_Link" link2="wrist_left_Link" reason="Never" />
+    <disable_collisions link1="wheel_front_right_Link" link2="wrist_right_Link" reason="Never" />
+    <disable_collisions link1="wrist2_left_Link" link2="wrist3_left_Link" reason="Adjacent" />
+    <disable_collisions link1="wrist2_left_Link" link2="wrist_left_Link" reason="Adjacent" />
+    <disable_collisions link1="wrist2_right_Link" link2="wrist3_right_Link" reason="Adjacent" />
+    <disable_collisions link1="wrist2_right_Link" link2="wrist_right_Link" reason="Adjacent" />
+    <disable_collisions link1="wrist3_left_Link" link2="wrist_left_Link" reason="Never" />
+</robot>

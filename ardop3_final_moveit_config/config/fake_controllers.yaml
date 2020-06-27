@@ -1,0 +1,23 @@
+controller_list:
+  - name: fake_left_arm_controller
+    joints:
+      - shoulder_left_joint
+      - bicep_left_joint
+      - forearm_left_joint
+      - wrist_left_joint
+      - wrist2_left_joint
+      - wrist3_left_joint
+  - name: fake_left_end_effector_controller
+    joints:
+      - end_effector_left_joint
+  - name: fake_right_arm_controller
+    joints:
+      - shoulder_right_joint
+      - bicep_right_joint
+      - forearm_right_joint
+      - wrist_right_joint
+      - wrist2_right_joint
+      - wrist3_right_joint
+  - name: fake_right_end_effector_controller
+    joints:
+      - end_effector_right_joint

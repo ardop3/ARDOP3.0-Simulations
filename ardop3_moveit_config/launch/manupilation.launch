@@ -1,0 +1,4 @@
+<launch>
+  <node name="image_converter" pkg="ardop3_moveit_config" type="create_image.py" output="screen"/>
+
+</launch>
